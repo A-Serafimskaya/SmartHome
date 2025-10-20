@@ -1,16 +1,12 @@
 public class Radio {
 
-    public int currentRadioStation;
+    // работа с радиостанциями
 
-//    public int currentVolume;
+    public int currentRadioStation;
 
     public int getCurrentRadioStation() {
         return currentRadioStation;
     }
-
-//    public int getCurrentVolume() {
-//        return currentVolume;
-//    }
 
     public void switchRadioStationNext() {
         if (currentRadioStation < 9) {
@@ -31,33 +27,6 @@ public class Radio {
         }
     }
 
-//    public void increaseVolumeNext() {
-//        if (currentVolume < 100) {
-//            currentVolume = currentVolume + 1;
-//        }
-//        else currentVolume = 100;
-//        }
-//    }
-//
-//    public void reduceVolumeNext() {
-//        if (currentVolume > 0) {
-//            currentVolume = currentVolume - 1;
-//        }
-//        if (currentVolume = 0) {
-//            currentVolume = 0;
-//        }
-//    }
-
-//    public void setCurrentVolume(int newCurrentVolume) {
-//        if (newCurrentVolume < 0) {
-//            return;
-//        }
-//        if (newCurrentVolume > 100) {
-//            return;
-//        }
-//        currentVolume = newCurrentVolume;
-//    }
-
     public void setCurrentRadioStation(int newCurrentRadioStation) {
         if (newCurrentRadioStation < 0) {
             return;
@@ -68,5 +37,33 @@ public class Radio {
         currentRadioStation = newCurrentRadioStation;
     }
 
+    // работа с уровнем звука
 
+    public int currentVolume;
+
+    public int getCurrentVolume() {
+        return currentVolume;
+    }
+
+    public void increaseCurrentVolumeBy1() {
+        if (currentVolume < 100) {
+            currentVolume = currentVolume + 1;
+        } else currentVolume = 100;
+    }
+
+    public void reduceCurrentVolumeBy1() {
+        if (currentVolume > 0) {
+            currentVolume = currentVolume - 1;
+        } else currentVolume = 0;
+    }
+
+    public void setCurrentVolume(int newCurrentVolume) {
+        if (newCurrentVolume < 0) {
+            newCurrentVolume = 0;
+        }
+        if (newCurrentVolume > 100) {
+            newCurrentVolume = 100;
+        }
+        currentVolume = newCurrentVolume;
+    }
 }
