@@ -68,10 +68,10 @@ public class RadioTest {
     @Test
     public void shouldSwitchCurrentRadioStationNext() {
         Radio radio = new Radio();
-        radio.setCurrentRadioStation(3);
+        radio.setCurrentRadioStation(8);
         radio.switchRadioStationNext();
 
-        int expected = 4;
+        int expected = 9;
         int actual = radio.getCurrentRadioStation();
 
         Assertions.assertEquals(expected, actual);
@@ -92,10 +92,10 @@ public class RadioTest {
     @Test
     public void shouldSwitchCurrentRadioStationPrev() {
         Radio radio = new Radio();
-        radio.setCurrentRadioStation(6);
+        radio.setCurrentRadioStation(5);
         radio.switchRadioStationPrev();
 
-        int expected = 5;
+        int expected = 4;
         int actual = radio.getCurrentRadioStation();
 
         Assertions.assertEquals(expected, actual);

@@ -1,21 +1,21 @@
 public class Radio {
-
-    // работа с радиостанциями
-
-    public int currentRadioStation;
+    
+    private int currentRadioStation;
+    private int currentVolume;
 
     public int getCurrentRadioStation() {
         return currentRadioStation;
     }
 
+    public int getCurrentVolume() {
+        return currentVolume;
+    }
     public void switchRadioStationNext() {
         if (currentRadioStation < 9) {
             currentRadioStation = currentRadioStation + 1;
         }
-        if (currentRadioStation == 9) {
-            currentRadioStation = 0;
+        else currentRadioStation = 0;
         }
-    }
 
     public void switchRadioStationPrev() {
         if (currentRadioStation > 0) {
@@ -35,14 +35,6 @@ public class Radio {
             return;
         }
         currentRadioStation = newCurrentRadioStation;
-    }
-
-    // работа с уровнем звука
-
-    public int currentVolume;
-
-    public int getCurrentVolume() {
-        return currentVolume;
     }
 
     public void increaseCurrentVolumeBy1() {
