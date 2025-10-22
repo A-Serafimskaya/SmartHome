@@ -11,21 +11,19 @@ public class Radio {
         return currentVolume;
     }
 
-    public void switchRadioStationNext(int newCurrentRadioStation) {
-        if (newCurrentRadioStation < 9) {
-            currentRadioStation = newCurrentRadioStation + 1;
+    public void switchRadioStationNext() {
+        if (currentRadioStation != 9) {
+            currentRadioStation++;
         } else {
             currentRadioStation = 0;
         }
     }
 
-    public void switchRadioStationPrev(int newCurrentRadioStation) {
-        if (newCurrentRadioStation > 0) {
-            currentRadioStation = newCurrentRadioStation - 1;
-        }
-        if (newCurrentRadioStation == 0) {
+    public void switchRadioStationPrev() {
+        if (currentRadioStation != 0) {
+            currentRadioStation--;
+        } else {
             currentRadioStation = 9;
-
         }
     }
 
@@ -39,22 +37,6 @@ public class Radio {
         currentRadioStation = newCurrentRadioStation;
     }
 
-    public void increaseCurrentVolumeBy1(int newCurrentVolume) {
-        if (0 <= newCurrentVolume && newCurrentVolume < 100) {
-            currentVolume = newCurrentVolume + 1;
-        } else {
-            currentVolume = 0;
-        }
-    }
-
-    public void reduceCurrentVolumeBy1(int newCurrentVolume) {
-        if (0 < newCurrentVolume && newCurrentVolume <= 100) {
-            currentVolume = newCurrentVolume - 1;
-        } else {
-            currentVolume = 0;
-        }
-    }
-
     public void setCurrentVolume(int newCurrentVolume) {
         if (newCurrentVolume < 0) {
             newCurrentVolume = 0;
@@ -63,5 +45,21 @@ public class Radio {
             newCurrentVolume = 100;
         }
         currentVolume = newCurrentVolume;
+    }
+
+    public void increaseCurrentVolumeBy1() {
+        if (currentVolume != 100) {
+            currentVolume++;
+        } else {
+            currentVolume = 100;
+        }
+    }
+
+    public void reduceCurrentVolumeBy1() {
+        if (currentVolume != 0) {
+            currentVolume--;
+        } else {
+            currentVolume = 0;
+        }
     }
 }
