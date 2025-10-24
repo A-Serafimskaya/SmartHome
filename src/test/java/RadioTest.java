@@ -8,12 +8,36 @@ public class RadioTest {
 // RadioStation tests
 
     @Test
+    public void shouldSetCurrentRadioStationWithParam() {
+        Radio radio = new Radio(20);
+
+        radio.setCurrentRadioStation(15);
+
+        int expected = 15;
+        int actual = radio.getCurrentRadioStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
     public void shouldSetCurrentRadioStation() {
         Radio radio = new Radio();
 
-        radio.setCurrentRadioStation(8);
+        radio.setCurrentRadioStation(5);
 
-        int expected = 8;
+        int expected = 5;
+        int actual = radio.getCurrentRadioStation();
+
+        Assertions.assertEquals(expected, actual);
+
+    }
+
+    @Test
+    public void shouldNotSetRadioStationAboveMaxParam() {
+        Radio radio = new Radio(35);
+        radio.setCurrentRadioStation(5);
+        radio.setCurrentRadioStation(55);
+        int expected = 5;
         int actual = radio.getCurrentRadioStation();
 
         Assertions.assertEquals(expected, actual);
@@ -31,6 +55,17 @@ public class RadioTest {
     }
 
     @Test
+    public void shouldNotSetRadioStationBelowMinParam() {
+        Radio radio = new Radio(40);
+        radio.setCurrentRadioStation(5);
+        radio.setCurrentRadioStation(-1);
+        int expected = 5;
+        int actual = radio.getCurrentRadioStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
     public void shouldNotSetRadioStationBelowMin() {
         Radio radio = new Radio();
         radio.setCurrentRadioStation(5);
@@ -40,6 +75,80 @@ public class RadioTest {
 
         Assertions.assertEquals(expected, actual);
     }
+
+    @Test
+    public void shouldSetCurrentRadioStation29Param() {
+        Radio radio = new Radio(31);
+
+        radio.setCurrentRadioStation(29);
+
+        int expected = 29;
+        int actual = radio.getCurrentRadioStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSetCurrentRadioStation30Param() {
+        Radio radio = new Radio(31);
+
+        radio.setCurrentRadioStation(30);
+
+        int expected = 30;
+        int actual = radio.getCurrentRadioStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldNotSetCurrentRadioStation31Param() {
+        Radio radio = new Radio(31);
+
+        radio.setCurrentRadioStation(5);
+        radio.setCurrentRadioStation(31);
+
+        int expected = 5;
+        int actual = radio.getCurrentRadioStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSetCurrentRadioStation0Param() {
+        Radio radio = new Radio(31);
+
+        radio.setCurrentRadioStation(0);
+
+        int expected = 0;
+        int actual = radio.getCurrentRadioStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSetCurrentRadioStation1Param() {
+        Radio radio = new Radio(31);
+
+        radio.setCurrentRadioStation(1);
+
+        int expected = 1;
+        int actual = radio.getCurrentRadioStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldNotSetCurrentRadioStationBelow0Param() {
+        Radio radio = new Radio(31);
+
+        radio.setCurrentRadioStation(-1);
+
+        int expected = 0;
+        int actual = radio.getCurrentRadioStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
 
     @Test
     public void shouldSetCurrentRadioStation8() {
@@ -66,7 +175,7 @@ public class RadioTest {
     }
 
     @Test
-    public void shouldSetCurrentRadioStation10() {
+    public void shouldNotSetCurrentRadioStation10() {
         Radio radio = new Radio();
 
         radio.setCurrentRadioStation(5);
@@ -109,6 +218,102 @@ public class RadioTest {
         radio.setCurrentRadioStation(-1);
 
         int expected = 0;
+        int actual = radio.getCurrentRadioStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSwitchCurrentRadioStationNextFrom29Param() {
+        Radio radio = new Radio(31);
+        radio.setCurrentRadioStation(29);
+        radio.switchRadioStationNext();
+
+        int expected = 30;
+        int actual = radio.getCurrentRadioStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSwitchCurrentRadioStationNextFromTheMaxParam() {
+        Radio radio = new Radio(31);
+        radio.setCurrentRadioStation(30);
+        radio.switchRadioStationNext();
+
+        int expected = 0;
+        int actual = radio.getCurrentRadioStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSwitchCurrentRadioStationNextFrom1RunParam() {
+        Radio radio = new Radio(31);
+        radio.setCurrentRadioStation(1);
+        radio.switchRadioStationNext();
+
+        int expected = 2;
+        int actual = radio.getCurrentRadioStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSwitchCurrentRadioStationNextFrom0Param() {
+        Radio radio = new Radio(31);
+        radio.setCurrentRadioStation(0);
+        radio.switchRadioStationNext();
+
+        int expected = 1;
+        int actual = radio.getCurrentRadioStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSwitchCurrentRadioStationPrevParam() {
+        Radio radio = new Radio(31);
+        radio.setCurrentRadioStation(1);
+        radio.switchRadioStationPrev();
+
+        int expected = 0;
+        int actual = radio.getCurrentRadioStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSwitchCurrentRadioStationPrevFromTheMinParam() {
+        Radio radio = new Radio(31);
+        radio.setCurrentRadioStation(0);
+        radio.switchRadioStationPrev();
+
+        int expected = 30;
+        int actual = radio.getCurrentRadioStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSwitchCurrentRadioStationPrevFrom29Param() {
+        Radio radio = new Radio(31);
+        radio.setCurrentRadioStation(29);
+        radio.switchRadioStationPrev();
+
+        int expected = 28;
+        int actual = radio.getCurrentRadioStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSwitchCurrentRadioStationPrevFrom30Param() {
+        Radio radio = new Radio(31);
+        radio.setCurrentRadioStation(30);
+        radio.switchRadioStationPrev();
+
+        int expected = 29;
         int actual = radio.getCurrentRadioStation();
 
         Assertions.assertEquals(expected, actual);
