@@ -2,10 +2,7 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class RadioTest {
-
-
-// RadioStation tests
+class RadioTest {
 
     @Test
     public void shouldSetCurrentRadioStationWithParam() {
@@ -621,4 +618,5 @@ public class RadioTest {
         Assertions.assertEquals(expected, actual);
     }
 }
+
 
